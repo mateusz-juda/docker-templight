@@ -13,7 +13,7 @@ RUN mkdir -p $workdir && sleep 1 \
     && cd $workdir/llvm/tools/clang/tools && mkdir templight && git clone https://github.com/mikael-s-persson/templight && cd templight && git reset --hard ${templight_rev} \
     && cd $workdir/llvm/tools/clang && svn patch tools/templight/templight_clang_patch.diff \
     && echo "add_subdirectory(templight)" >> $workdir/llvm/tools/clang/tools/CMakeLists.txt \
-    && cd $workdir && mkdir build && cd build && cmake ../llvm/ && make -j "$(cat /proc/cpuinfo | grep -c '^processor')"
+    && cd $workdir && mkdir build && cd build && cmake ../llvm/ && make -j "$(cat /proc/cpuinfo | grep -c '^processor')" install
 
 #    && $workdir/build/bin/templight
 
